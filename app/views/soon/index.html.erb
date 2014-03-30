@@ -1,0 +1,14 @@
+<h1>Soon#index</h1>
+<%= form_tag deals_path, :method => :get do %>
+<p>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag "Search Deals Near Me", :name => nil %>
+</p>
+<% end %>
+<p>Find me in app/views/soon/index.html.erb</p>
+<% if notice %> 
+<p id="notice"><%= notice %>
+</p> 
+<% end %>
+<h1>TennerDeals</h1>
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TennerDeals</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track", "Highcharts", "jquery-1.11.0" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class='<%= controller.controller_name %>'>
+
+<div id="banner"> 
+<%= @page_title || "TennerDeals" %> 
+</div> 
+<div id="columns"> 
+<div id="side" align="middle">
+<ul> 	
+
+    <a href="http://www..../faq" style="font-size: 25px; text-decoration: none">Lunch</a>&nbsp&nbsp&nbsp |&nbsp&nbsp&nbsp
+
+    <a href="http://www..../faq" style="font-size: 25px; text-decoration: none">Food</a> &nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+ 
+    <a href="http://www..../news" style="font-size: 25px; text-decoration: none">Products</a> &nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+ 
+    <a href="http://www..../contact" style="font-size: 25px; text-decoration: none">Gym  </a>&nbsp&nbsp&nbsp
+	<a><%= link_to 'Home', home_index_path %></a>
+	 	 <a><%= link_to 'Lunch', lunch_index_path %></a>
+	 	 <a><%= link_to 'Student', student_index_path %></a>
+	 	 <a><%= link_to 'Fitness', fitness_index_path %></a>
+         <a><%= link_to 'Sign Up', new_newsletter_path %></a>
+ </ul> 
+</div>  
+<div id="side1", align="left"> 
+ <% if session[:admin_user_id] %> 
+  </br></br></br></br></br>
+ <%= link_to 'Orders', orders_path %> </br>
+ <%= link_to 'Deals', deals_path %></br>
+ <%= link_to 'Users', admin_users_path %> </br>
+  <%= link_to 'signup', newsletters_path %> </br>
+  <%= link_to 'admin', admin_index_path %> </br></br>
+
+  
+ <%= button_to 'Logout', logout_path, method: :delete %>
+ <% end %>
+ </div>
+ <div id="side2">
+ </br></br></br></br>
+  <% if @cart %>
+ <div id="cart"
+   <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+   <%= render @cart %>
+   <% end %>
+   <% end %>
+
+ </div>
+ </div>
+<div id="main">
+<%= yield %> 
+</div> 
+</div>
+</body>
+<html/>

@@ -1,0 +1,31 @@
+<h1>Student#index</h1>
+<p>Find me in app/views/student/index.html.erb</p>
+<% if notice %> 
+<p id="notice"><%= notice %>
+</p> 
+<% end %>
+<h1>TennerDeals</h1>
+<% cache ['home', Deal.new] do %>
+<% @deals.each do |deal| %> 
+<% cache ['entry', deal] do %>
+
+<div class="entry"> 
+<%= image_tag(deal.image_url) %> <h3>
+<%= deal.name %></h3> <%= sanitize(deal.description) %> 
+
+<div class="price_line"> 
+
+<span class="price">
+<%= number_to_currency(deal.price) %>
+</span>
+
+<%= deal.status %>
+<%= link_to 'View Deal', deal %>
+
+
+ </div>
+
+ </div>
+ <% end %>
+   <% end %>
+   <% end %>
